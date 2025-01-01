@@ -23,6 +23,7 @@ jobs:
           token: ${{ secrets.CODECOV_TOKEN }}
   
   linting-pipeline:
+    needs: test-pipeline
     runs-on: ubuntu-latest
     
     steps:
@@ -34,14 +35,10 @@ jobs:
       - name: Install Ruff
         run: pip install ruff
       - name: Run Ruff
-        run: |
-          ruff check --output-format=github
-          ruff format .
-      - uses: stefanzweifel/git-auto-commit-action@v4
-        with:
-          commit_message: 'style fixes by ruff'
+        run: ruff check --output-format=github
       
   type-check:
+    needs: test-pipeline
     runs-on: ubuntu-latest
 
     steps:
