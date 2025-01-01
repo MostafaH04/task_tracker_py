@@ -1,21 +1,21 @@
-# CLI Task Tracker
+# CLI Task Tracker 📝
 [![codecov](https://codecov.io/gh/MostafaH04/task_tracker_py/graph/badge.svg?token=Z1Y0KH7JDC)](https://codecov.io/gh/MostafaH04/task_tracker_py)
 ![Pipeline](https://github.com/MostafaH04/task_tracker_py/actions/workflows/ci.yaml/badge.svg)
 
-Simple CLI task tracker. I was bored, so I decided to do this for fun :P
+Simple CLI task tracker. I was bored, so I decided to do this for fun 😅
 
 It follows the problem description [here](https://roadmap.sh/projects/task-tracker).
 
-The main purpose of this project was to set up automated tests (using unittests & coverage module) that run using GitHub Actions. There are also some static analysis jobs using `ruff` and `mypy`.
+The main purpose of this project was to set up automated tests (using unittests & coverage module) that run using GitHub Actions 🚀. There are also some static analysis jobs using `ruff` and `mypy` 📃.
 
-# Cloning
+# Cloning 🖨️
 To clone the repo run the following commands
 ```
 git clone https://github.com/MostafaH04/task_tracker_py.git
 cd task_tracker_py
 ```
 
-# Usage
+# Usage 🚢
 The task tracker CLI follows the expected interface provided in the problem description. To call it one must call `py taskCLI.py`.
 
 ```
@@ -41,4 +41,4 @@ task-cli list "TODO"
 task-cli list "In Progress"
 ```
 
-This is built on a task tracker class interface under `/TaskInterface`. Docstrings are provided to guide users regarding their usage.
+This is built on a task tracker class interface under `/TaskInterface` 🔭. Docstrings are provided to guide users regarding their usage 📰.
