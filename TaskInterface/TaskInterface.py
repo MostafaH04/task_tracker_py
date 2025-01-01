@@ -2,7 +2,6 @@ import json
 import datetime
 from typing import Union
 
-
 class TaskInterface:
     def __init__(self, fileName: str = "task_file") -> None:
         self.task_file_name = fileName + ".json"
@@ -18,22 +17,22 @@ class TaskInterface:
                 "desc": task_desc,
                 "status": "TODO",
                 "createdAt": time_formated,
-                "updatedAt": time_formated,
+                "updatedAt": time_formated
             }
         }
 
         self._add_content_(new_task)
-
+    
     def delete_task(self, task_id: int) -> bool:
         return self._remove_content_(task_id)
-
+    
     def update_task(self, task_id: int, new_desc: str) -> bool:
         return self._update_content_(task_id, new_desc)
 
     def update_task_progress(self, task_id: int, progress: str) -> bool:
         if progress != "TODO" and progress != "In Progress" and progress != "Done":
             return False
-
+    
         return self._update_content_progress_(task_id, progress)
 
     def list_tasks(self, filter: Union[str, None] = None) -> None:
@@ -49,14 +48,14 @@ class TaskInterface:
 
             print(self._format_task_(task_id, self.content[key]))
             print("_" * 60)
-
-    def _format_task_(self, task_id: int, task_content: dict) -> str:
-        formatted_text = f"""
+        
+    def _format_task_(self, task_id:int, task_content: dict) -> str:
+        formatted_text = f'''
 ID: {task_id}\n
 Description: {task_content["desc"]}\n
 Status: {task_content["status"]}\n
 Creation Time: {task_content["createdAt"]}\n
-Last Updated Time: {task_content["updatedAt"]}"""
+Last Updated Time: {task_content["updatedAt"]}'''
 
         return formatted_text
 
@@ -77,7 +76,7 @@ Last Updated Time: {task_content["updatedAt"]}"""
         self._update_file_()
 
         return True
-
+    
     def _update_content_progress_(self, id: int, new_progress: str) -> bool:
         if str(id) not in self.content:
             return False
@@ -102,8 +101,8 @@ Last Updated Time: {task_content["updatedAt"]}"""
         return True
 
     def _get_last_id_(self) -> int:
-        last_id = int(self.content["last_id"]) + 1
-        self.content["last_id"] = last_id
+        last_id = int(self.content['last_id']) + 1
+        self.content['last_id'] = last_id
 
         return last_id
 
@@ -113,8 +112,8 @@ Last Updated Time: {task_content["updatedAt"]}"""
         file.close()
 
         return content
-
+    
     def _update_file_(self) -> None:
         file = open(self.task_file_name, "w+")
         json.dump(self.content, file)
-        file.close()
+        file.close()        
