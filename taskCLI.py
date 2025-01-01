@@ -57,10 +57,12 @@ def main(args: list) -> int:
             task_interface.list_tasks(subcommnad) 
 
         if res is not None:
-            if not res: return 1
-
+            if not res:
+                return 1
+            
         return 0
-    except ValueError as e:
+    
+    except ValueError:
         return 1
 
 if __name__ == "__main__":
