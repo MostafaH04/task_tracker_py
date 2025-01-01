@@ -1,6 +1,6 @@
 # CLI Task Tracker 📝
 [![codecov](https://codecov.io/gh/MostafaH04/task_tracker_py/graph/badge.svg?token=Z1Y0KH7JDC)](https://codecov.io/gh/MostafaH04/task_tracker_py)
-![Pipeline](https://github.com/MostafaH04/task_tracker_py/actions/workflows/ci.yaml/badge.svg)
+[![Pipeline](https://github.com/MostafaH04/task_tracker_py/actions/workflows/ci.yaml/badge.svg)](https://github.com/MostafaH04/task_tracker_py/actions/workflows/ci.yaml)
 
 Simple CLI task tracker. I was bored, so I decided to do this for fun 😅
 
