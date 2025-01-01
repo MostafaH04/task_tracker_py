@@ -1,0 +1,13 @@
+name: Testing CI
+on: [push]
+jobs:
+  test-pipeline:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses:
+          jenkinsci/jfr-static-image-action@master
+        with:
+          command: run
+          jenkinsfile: .Jenkins/Jenkinsfile
+          pluginstxt: .Jenkins/plugins.txt
