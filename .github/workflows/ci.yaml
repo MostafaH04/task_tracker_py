@@ -1,7 +1,7 @@
 name: Testing CI
-on: [push]
+on: [push, pull_request]
 jobs:
-  test-pipeline:
+  execute-tests:
     runs-on: ubuntu-latest
 
     steps:
@@ -21,3 +21,32 @@ jobs:
         uses: codecov/codecov-action@v5
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
+  
+  linting:
+    needs: execute-tests
+    runs-on: ubuntu-latest
+    
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+      - name: Install Ruff
+        run: pip install ruff
+      - name: Run Ruff
+        run: ruff check --output-format=github
+      
+  type-check:
+    needs: execute-tests
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+      - run: pip install mypy
+      - name: Run mypy
+        run: mypy --disallow-untyped-defs .
