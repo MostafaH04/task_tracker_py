@@ -1,7 +1,7 @@
 name: Testing CI
 on: [push, pull_request]
 jobs:
-  test-pipeline:
+  execute-tests:
     runs-on: ubuntu-latest
 
     steps:
@@ -22,7 +22,7 @@ jobs:
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
   
-  linting-pipeline:
+  linting:
     needs: test-pipeline
     runs-on: ubuntu-latest
     
