@@ -27,16 +27,28 @@ jobs:
     
     steps:
       - uses: actions/checkout@v4
-      - name: Set up Python 3.9
+      - name: Set up Python
         uses: actions/setup-python@v5
         with:
-          python-version: 3.9
+          python-version: '3.x'
       - name: Install Ruff
         run: pip install ruff
       - name: Run Ruff
         run: |
           ruff check --output-format=github
-          ruff format .
       - uses: stefanzweifel/git-auto-commit-action@v4
         with:
           commit_message: 'style fixes by ruff'
+      
+  type-check:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+      - run: pip install mypy
+      - name: Run mypy
+        run: mypy --disallow-untyped-defs .
