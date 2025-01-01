@@ -16,7 +16,7 @@ jobs:
       - name: Test with unittest
         run: |
           pip install coverage
-          coverage run -m unittest discover -p="Test*.py"
+          coverage run --source=./TaskInterface -m unittest discover -p="Test*.py"
       - name: Upload Coverage to Codecov
         uses: codecov/codecov-action@v5
         with:
