@@ -1,5 +1,5 @@
 name: Testing CI
-on: [push]
+on: [push, pull_request]
 jobs:
   test-pipeline:
     runs-on: ubuntu-latest
@@ -34,4 +34,9 @@ jobs:
       - name: Install Ruff
         run: pip install ruff
       - name: Run Ruff
-        run: ruff check --output-format=github
+        run: |
+          ruff check --output-format=github
+          ruff fix .
+      - uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: 'style fixes by ruff'
