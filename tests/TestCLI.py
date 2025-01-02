@@ -6,8 +6,8 @@ import os
 from taskCLI import main
 
 
-class TestInterface(unittest.TestCase):
-    def test_add(self) -> None:
+class TestCLIInterface(unittest.TestCase):
+    def test_add_cli(self) -> None:
         """
         Test adding new tasks
         """
@@ -43,7 +43,7 @@ class TestInterface(unittest.TestCase):
         self.assertTrue(content["2"]["desc"] == "task_2")
         self.assertTrue(content["3"]["desc"] == "task_3")
 
-    def test_delete(self) -> None:
+    def test_delete_cli(self) -> None:
         """
         Test deleting exisitng tasks
         """
@@ -97,7 +97,7 @@ class TestInterface(unittest.TestCase):
 
         self.assertTrue(content["2"]["desc"] == "task_2")
 
-    def test_update(self) -> None:
+    def test_update_cli(self) -> None:
         """
         Test updating exisitng tasks
         """
@@ -153,7 +153,7 @@ class TestInterface(unittest.TestCase):
         self.assertTrue(content["2"]["desc"] == "updated_task_2")
         self.assertTrue(content["3"]["desc"] == "task_3")
 
-    def test_update_progress(self) -> None:
+    def test_update_progress_cli(self) -> None:
         """
         Test updating progress on exisitng tasks
         """
@@ -224,7 +224,7 @@ class TestInterface(unittest.TestCase):
         self.assertTrue(content["3"]["status"] == "In Progress")
 
     @patch("builtins.print")
-    def test_listing_tasks_none_empty(self, mock_print: unittest.mock.Mock) -> None:
+    def test_listing_tasks_none_empty_cli(self, mock_print: unittest.mock.Mock) -> None:
         """
         Test listing exisitng tasks, when task list is populated
         """
